@@ -1035,6 +1035,10 @@ function setup_get_remote_url() {
 
 /* NOTE: following servers are not fully tested! */
 
+    } else if (stripos($_SERVER['SERVER_SOFTWARE'], 'Caddy') !== false) {
+        //lighttpd - not officially supported
+        $rurl['fullpath'] = $_SERVER['REQUEST_URI']; // TODO: verify this is always properly encoded
+        
     } else if (stripos($_SERVER['SERVER_SOFTWARE'], 'lighttpd') !== false) {
         //lighttpd - not officially supported
         $rurl['fullpath'] = $_SERVER['REQUEST_URI']; // TODO: verify this is always properly encoded
